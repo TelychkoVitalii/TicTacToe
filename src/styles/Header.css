@@ -1,0 +1,15 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 0 13px 40px;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.title {
+    font-size: 34px;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0;
+}
