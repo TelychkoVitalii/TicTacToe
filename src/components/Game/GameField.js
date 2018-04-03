@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cell from './Cell';
-import '../styles/GameField.css';
+import '../../styles/GameField.css';
 
 class GameField extends Component {
     render() {

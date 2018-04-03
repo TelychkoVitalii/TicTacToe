@@ -7,9 +7,17 @@ class ModeSet extends Component {
             <div className="setUp">
                 <h2 className='blockTitle'>Your mode</h2>
                 <div id='changeMode'>
-                    <input type='radio' id='first' name="mode" value='Easy' />
+                    <input type='radio'
+                           id='first'
+                           name="mode"
+                           onChange={this.props.mode}
+                           value='Easy' />
                     <label htmlFor="first">Easy</label>
-                    <input type='radio' id='second' name="mode" value='Hard' />
+                    <input type='radio'
+                           id='second'
+                           name="mode"
+                           onChange={this.props.mode}
+                           value='Hard' />
                     <label htmlFor="second">Hard</label>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from './Nav';
-import '../styles/Header.css';
+import '../../styles/Header.css';
 
 class Header extends Component {
     render() {

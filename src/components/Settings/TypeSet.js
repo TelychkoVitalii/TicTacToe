@@ -6,8 +6,10 @@ class TypeSet extends Component {
         return (
             <div className="setUp">
                 <h2 className='blockTitle'>Your type</h2>
-                <select type='text' id='changeType'>
-                    <option value="" disabled selected>Choose your figure</option>
+                <select type='text'
+                        id='changeType'
+                        onChange={this.props.type}>
+                    <option disabled>Choose your figure</option>
                     <option>X</option>
                     <option>O</option>
                 </select>

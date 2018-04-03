@@ -6,7 +6,10 @@ class NameSet extends Component {
         return (
             <div className="setUp">
                 <h2 className='blockTitle'>Your name</h2>
-                <input type='text' id='changeUserName' placeholder='Your username' value='' />
+                <input type='text'
+                       id='changeUserName'
+                       placeholder='Your username'
+                       onChange={this.props.name} />
             </div>
         );
     }
