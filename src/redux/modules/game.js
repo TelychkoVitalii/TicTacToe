@@ -1,5 +1,5 @@
-// Actions
-const ADD_SETTINGS = 'ADD_SETTINGS', ADD_MOVE = 'ADD_MOVE';
+// Constants
+import { ADD_SETTINGS, ADD_MOVE } from './actionTypes';
 
 // Action Creators
 export function addSettings(name, figure, mode) {
@@ -11,9 +11,10 @@ export function addSettings(name, figure, mode) {
     }
 }
 
-export function addMove(figure) {
+export function addMove(id, figure) {
     return {
         type: ADD_MOVE,
+        id,
         figure
     }
 }
@@ -33,8 +34,15 @@ export default function reducer(state = initialState, action) {
             })
         }
         case ADD_MOVE: {
+            const matrix = state.matrix;
             return Object.assign({}, state, {
-                // matrix: [ action.figure ]
+                matrix: [ ...matrix.map((el, i) => {
+                    if(i === action.id) {
+                        matrix[i] = action.figure;
+                        return matrix[i];
+                    }
+                    return matrix[i];
+                }) ]
             })
         }
         default:

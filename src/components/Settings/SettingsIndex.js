@@ -9,7 +9,7 @@ import '../../styles/Settings.css';
 
 const mapStateToProps = (state) => {
     return {
-        settings: state.addData.settings
+        settings: state.game.settings
     }
 };
 
