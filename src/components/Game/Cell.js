@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addSettings, addMove } from '../../redux/modules/addData';
+import { addMove } from '../../redux/modules/game';
 import '../../styles/Cell.css';
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
     return {
-        figure: state.addData.settings.figure
+        figure: state.addData.settings.figure || JSON.parse(localStorage.getItem('settings')).figure
     }
 };
 
@@ -24,8 +24,9 @@ class Cell extends Component {
     }
 
     userMove = () => {
-        this.props.addMove(this.props.figure);
-        this.setState({value: this.props.figure});
+        const { figure } = this.props;
+        this.props.addMove(figure);
+        this.setState({value: figure});
     };
 
     render() {

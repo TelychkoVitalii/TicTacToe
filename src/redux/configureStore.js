@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger';
-import addData from './modules/addData';
+import addData from './modules/game';
 
 const logger = createLogger({collapsed: true}),
       createStoreWithMiddleware = applyMiddleware(logger)(createStore),

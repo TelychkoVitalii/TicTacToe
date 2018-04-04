@@ -1,53 +1,28 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Cell from './Cell';
 import '../../styles/GameField.css';
 
+const mapStateToProps = (state) => {
+    return {
+        matrix: state.addData.matrix
+    }
+};
+
 class GameField extends Component {
     render() {
-        return (
-            <div>
-                {/*<div id="modal"></div>*/}
-                <div id="matrix">
-                    <div className='cell top left'>
-                        <Cell value=''
-                              className="animate"/>
-                    </div>
-                    <div className='cell top'>
-                        <Cell value=''
-                              className="animate"/>
-                    </div>
-                    <div className='cell top right'>
-                        <Cell value=''
-                              className="animate"/>
-                    </div>
-                    <div className='cell left'>
-                        <Cell value=''
-                              className="animate"/>
-                    </div>
-                    <div className='cell center'>
-                        <Cell value=''
-                              className="animate"/>
-                    </div>
-                    <div className='cell right'>
-                        <Cell value=''
-                              className="animate"/>
-                    </div>
-                    <div className='cell bottom left'>
-                        <Cell value=''
-                              className="animate"/>
-                    </div>
-                    <div className='cell bottom'>
-                        <Cell value=''
-                              className="animate"/>
-                    </div>
-                    <div className='cell bottom right'>
-                        <Cell value=''
-                              className="animate"/>
-                    </div>
-                </div>
-            </div>
-        );
+        const size = 3;
+        const rows = this.props.matrix.map((content, index) => <Cell key={index} className='animate'>{content}</Cell>)
+            .reduce((arr, element, index) => {
+                index % size === 0 && arr.push([]);
+                arr[arr.length - 1].push(element);
+                return arr;
+        }, []).map(rowContent => <div className="row">{rowContent}</div> );
+        return <div id="matrix">{rows}</div>;
     }
 }
 
-export default GameField;
+export default connect (
+    mapStateToProps,
+    null
+)(GameField);

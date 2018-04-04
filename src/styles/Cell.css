@@ -1,12 +1,13 @@
 .cell {
     position: relative;
     float: left;
-    width: 230px;
-    height: 230px;
-    padding-left: 20px;
+    width: 225px;
+    height: 225px;
+    text-align: center;
     cursor: pointer;
     font-size: 10rem;
     font-weight: 600;
+    border: 4px solid black;
 }
 
 @keyframes appear {

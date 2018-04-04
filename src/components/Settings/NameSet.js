@@ -9,7 +9,7 @@ class NameSet extends Component {
                 <input type='text'
                        id='changeUserName'
                        placeholder='Your username'
-                       onChange={this.props.name} />
+                       onChange={this.props.onNameChanged} />
             </div>
         );
     }

@@ -10,13 +10,13 @@ class ModeSet extends Component {
                     <input type='radio'
                            id='first'
                            name="mode"
-                           onChange={this.props.mode}
+                           onChange={this.props.onModeChanged}
                            value='Easy' />
                     <label htmlFor="first">Easy</label>
                     <input type='radio'
                            id='second'
                            name="mode"
-                           onChange={this.props.mode}
+                           onChange={this.props.onModeChanged}
                            value='Hard' />
                     <label htmlFor="second">Hard</label>
                 </div>

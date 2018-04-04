@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import Settings from '../Settings/Settings';
+import Settings from '../Settings/SettingsIndex';
 import Help from '../Help/Help';
 import GameLayout from '../Game/GameLayout';
 import '../../styles/App.css';
