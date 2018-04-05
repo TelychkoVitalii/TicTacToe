@@ -29,21 +29,10 @@ const initialState = {
 export default function reducer(state = initialState, action) {
     switch(action.type) {
         case ADD_SETTINGS: {
-            return Object.assign({}, state, {
-                settings: {name: action.name, figure: action.figure, mode: action.mode}
-            })
+            return Object.assign({}, state, { settings: {...state.settings} });
         }
         case ADD_MOVE: {
-            const matrix = state.matrix;
-            return Object.assign({}, state, {
-                matrix: [ ...matrix.map((el, i) => {
-                    if(i === action.id) {
-                        matrix[i] = action.figure;
-                        return matrix[i];
-                    }
-                    return matrix[i];
-                }) ]
-            })
+            return Object.assign({}, state, { matrix: [ ...state.matrix ] });
         }
         default:
             return state;

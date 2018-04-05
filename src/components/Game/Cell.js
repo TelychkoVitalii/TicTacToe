@@ -5,15 +5,12 @@ import '../../styles/Cell.css';
 
 const mapStateToProps = (state) => {
     return {
-        move: JSON.parse(localStorage.getItem('settings')).figure || state.game.settings.figure
+        matrix: state.game.matrix,
+        move: JSON.parse(localStorage.getItem('settings')).figure
     }
 };
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addMove: (id, figure) => dispatch(addMove(id, figure))
-    }
-};
+// || state.game.settings.figure
+const mapDispatchToProps = { addMove };
 
 class Cell extends Component {
 

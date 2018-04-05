@@ -13,21 +13,25 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addSettings: (name, figure, mode) => dispatch(addSettings(name, figure, mode))
-    }
-};
+const mapDispatchToProps =  { addSettings };
 
 class Settings extends Component {
 
-    handleUserName = (event) => this.props.settings.name = event.target.value;
-    handleFigure = (event) => this.props.settings.figure = event.target.value;
-    handleMode = (event) => this.props.settings.mode = event.target.value;
+    constructor(props) {
+        super(props);
+        const {name, figure, mode} = this.props.settings;
+        this.state = {
+            name, figure, mode
+        }
+    }
+
+    handleUserName = (event) => this.setState({name: event.target.value});
+    handleFigure = (event) => this.setState({figure: event.target.value});
+    handleMode = (event) => this.setState({mode: event.target.value});
 
     submitData = () => {
-        const {name, figure, mode} = this.props.settings;
-        localStorage.setItem('settings', JSON.stringify(this.props.addSettings(name, figure, mode)));
+        const {name, figure, mode} = this.state;
+        this.props.addSettings(name, figure, mode);
     };
 
     render() {
@@ -35,9 +39,9 @@ class Settings extends Component {
             <div>
                 <h1 className='bestSettings'>Choose your best settings</h1>
                 <div id='settingsContent'>
-                    <NameSet onNameChanged={this.handleUserName} />
-                    <TypeSet onTypeChanged={this.handleFigure} />
-                    <ModeSet onModeChanged={this.handleMode} />
+                    <NameSet onNameChanged={this.handleUserName} value={this.state.name} />
+                    <TypeSet onTypeChanged={this.handleFigure} value={this.state.figure} />
+                    <ModeSet onModeChanged={this.handleMode} value={this.state.mode} />
                 </div>
                 <Link to='/'>
                     <button id='saveButton' onClick={this.submitData}>Save</button>
