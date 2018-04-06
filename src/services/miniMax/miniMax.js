@@ -2,9 +2,10 @@ import aiPlayerType from './oppositeType';
 import defineWinner from './defineWinner';
 
 const miniMax = (newField, player) => {
-    let availCells = newField.filter(el => (el !== 'O' && el !== 'X')),
+    let currentFigure = JSON.parse(localStorage.getItem('settings')).figure,
+        availCells = newField.filter(el => (el !== 'O' && el !== 'X')),
         size = availCells.length,
-        result, moves = [], bestMove, bestScore = 10000, i;
+        result, moves = [], bestMove, bestScore, i, move;
 
     if(defineWinner(newField, player)) {
         return {score: -10}
@@ -15,26 +16,23 @@ const miniMax = (newField, player) => {
     }
 
     for (i = 0; i < size; i += 1) {
-        const move = {};
+        move = {};
         move.index = newField[availCells[i]];
-
         newField[availCells[i]] = player;
-
-        if(player === 'X') {
+        if(player === currentFigure) {
             result = miniMax(newField, aiPlayerType(player));
             move.score = result.score;
         } else {
             result = miniMax(newField, player);
             move.score = result.score;
         }
-
-
         newField[availCells[i]] = move.index;
         moves.push(move);
     }
-    if(player === 'X') {
+
+    if(player === currentFigure) {
         bestScore = -10000;
-        for (i = 0; i < size; i++) {
+        for (i = 0; i < size; i += 1) {
             if (moves[i].score > bestScore) {
                 bestScore = moves[i].score;
                 bestMove = i;
@@ -42,8 +40,8 @@ const miniMax = (newField, player) => {
         }
     } else {
         bestScore = 10000;
-        for(i = 0; i < size; i += 1) {
-            if(moves[i].score < bestScore){
+        for (i = 0; i < size; i += 1) {
+            if (moves[i].score < bestScore) {
                 bestScore = moves[i].score;
                 bestMove = i;
             }
@@ -54,16 +52,3 @@ const miniMax = (newField, player) => {
 };
 
 export default miniMax;
-
-// showModal = () => {
-//     // this.$el[0].parentElement.classList.add('blur');
-//     this.showChildView('modal', new ModalView);
-// },
-//
-// showWinner = (cells) => {
-//     Array.from(cells).filter(el => {
-//         const value = el.children[this.firstElement];
-//         (value.innerText) && (value.classList = 'winnerStyle');
-//     });
-//     // setTimeout(this.showModal.bind(this), 0);
-// },

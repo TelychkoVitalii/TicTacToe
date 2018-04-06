@@ -4,8 +4,13 @@ import '../../styles/UsersList.css';
 class UsersList extends Component {
     render() {
         return (
-            <div>
-                <h1>Statistics</h1>
+            <div className="userList">
+                <h1 className="statistics">Statistics</h1>
+                {/*{this.props.players.map(user => {*/}
+                    {/*return (*/}
+                        {/*<span>{user.name}</span>*/}
+                    {/*)*/}
+                {/*})}*/}
             </div>
         );
     }

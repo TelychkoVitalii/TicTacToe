@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Settings from '../Settings/index';
 import Help from '../Help/Help';
-import GameLayout from '../Game/GameLayout';
+import GameLayout from '../Game/index';
 import '../../styles/App.css';
 
 class App extends Component {
