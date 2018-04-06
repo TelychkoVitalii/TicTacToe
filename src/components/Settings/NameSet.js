@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../../styles/NameSet.css';
 
-class NameSet extends Component {
-    render() {
+function NameSet(props) {
         return (
             <div className="setUp">
                 <h2 className='blockTitle'>Your name</h2>
-                <input type='text' id='changeUserName' placeholder='Your username' value='' />
+                <input type='text'
+                       id='changeUserName'
+                       value={props.value}
+                       placeholder='Your username'
+                       onChange={props.onNameChanged} />
             </div>
         );
-    }
 }
 
 export default NameSet;
