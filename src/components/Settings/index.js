@@ -17,12 +17,8 @@ const mapDispatchToProps =  { addSettings };
 
 class Settings extends Component {
 
-    constructor(props) {
-        super(props);
-        const {name, figure, mode} = this.props.settings;
-        this.state = {
-            name, figure, mode
-        }
+    static getDerivedStateFromProps(nextProps) {
+        return nextProps.settings;
     }
 
     handleUserName = (event) => this.setState({name: event.target.value});
