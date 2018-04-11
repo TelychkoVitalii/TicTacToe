@@ -6,7 +6,7 @@ class Footer extends Component {
         return (
             <div>
                 <footer>
-                    <h5>Used Marionette.js Framework | MiniMax Algorithm | Game Theory</h5>
+                    <h5>Used React.js / Redux | MiniMax Algorithm | Game Theory</h5>
                 </footer>
             </div>
         );

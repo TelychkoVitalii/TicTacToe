@@ -17,6 +17,10 @@ const mapDispatchToProps =  { addSettings };
 
 class Settings extends Component {
 
+    state = {
+        settings: {}
+    };
+
     static getDerivedStateFromProps(nextProps) {
         return nextProps.settings;
     }
@@ -39,7 +43,7 @@ class Settings extends Component {
                     <TypeSet onTypeChanged={this.handleFigure} value={this.state.figure} />
                     <ModeSet onModeChanged={this.handleMode} value={this.state.mode} />
                 </div>
-                <Link to='/'>
+                <Link to="/">
                     <button id='saveButton' onClick={this.submitData}>Save</button>
                 </Link>
             </div>

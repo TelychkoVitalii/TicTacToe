@@ -3,7 +3,7 @@ import '../../styles/Summary.css';
 
 class Results extends Component {
     render() {
-        const {player, ties, computer} = this.props.data,
+        const {player, ties, computer} = JSON.parse(localStorage.getItem('summary')) || this.props.data,
               summary = [
                     {id: 1, title: 'Player', score: player},
                     {id: 2, title: 'Ties', score: ties},

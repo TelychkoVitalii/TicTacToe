@@ -6,7 +6,8 @@ import '../../styles/Cell.css';
 const mapStateToProps = (state) => {
     return {
         matrix: state.game.matrix,
-        move: JSON.parse(localStorage.getItem('settings')).figure || state.game.settings.figure
+        move: state.game.settings.figure,
+        mode: state.game.settings.mode,
     }
 };
 
@@ -16,7 +17,7 @@ class Cell extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            condition: false
+            condition: false,
         }
     }
 
@@ -29,7 +30,7 @@ class Cell extends Component {
         return (
             <div className={this.state.condition ? 'animate' : 'innerCell'}
                  onClick={this.userMove}>
-                    {this.props.value}
+                   {this.props.value}
             </div>
         )
     }

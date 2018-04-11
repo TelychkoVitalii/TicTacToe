@@ -1,7 +1,7 @@
 import aiPlayerType from './oppositeType';
 import defineWinner from './defineWinner';
 
-const miniMax = (newField, player) => {
+const miniMax = (newField, player, a) => {
     let currentFigure = JSON.parse(localStorage.getItem('settings')).figure,
         availCells = newField.filter(el => (el !== 'O' && el !== 'X')),
         size = availCells.length,

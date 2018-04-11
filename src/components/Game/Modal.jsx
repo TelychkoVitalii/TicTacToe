@@ -9,12 +9,11 @@ function Modal(props) {
             <div id='modalBtns'>
                 <button className='modalBtn'
                         onClick={props.restartGame}>Restart</button>
-                <Link to='/settings'>
-                    <button className='modalBtn'>Settings</button>
-                </Link>
                 <Link to='/help'>
                     <button className='modalBtn'>Help</button>
                 </Link>
+                <button className='modalBtn'
+                        onClick={props.exitGame}>Exit</button>
             </div>
         </div>
     );

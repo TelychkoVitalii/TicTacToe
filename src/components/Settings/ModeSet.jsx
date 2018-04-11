@@ -4,22 +4,20 @@ import '../../styles/ModeSet.css';
 function ModeSet(props) {
         return (
             <div className="setUp">
-                <h2 className='blockTitle'>Your mode</h2>
+                <h2 className='blockTitle'>First Move</h2>
                 <div id='changeMode'>
                     <input type='radio'
                            id='first'
                            name="mode"
-                           defaultValue={props.value}
-                           onChange={props.onModeChanged}
-                           value='Easy' />
-                    <label htmlFor="first">Easy</label>
+                           defaultValue={props.value.human}
+                           onChange={props.onModeChanged} />
+                    <label htmlFor="first">Human</label>
                     <input type='radio'
                            id='second'
                            name="mode"
-                           defaultValue={props.value}
-                           onChange={props.onModeChanged}
-                           value='Hard' />
-                    <label htmlFor="second">Hard</label>
+                           defaultValue={props.value.computer}
+                           onChange={props.onModeChanged} />
+                    <label htmlFor="second">Computer</label>
                 </div>
             </div>
         );

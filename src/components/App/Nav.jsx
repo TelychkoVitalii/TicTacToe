@@ -8,10 +8,10 @@ class Nav extends Component {
             <div>
                 <ul className="navList">
                     <li>
-                        <NavLink className='settings' exact activeClassName='active' to="/settings"> Settings </NavLink>
+                        <NavLink className='settings' exact to="/settings"> Settings </NavLink>
                     </li>
                     <li>
-                        <NavLink className='help' activeClassName='active' to="/help"> Help </NavLink>
+                        <NavLink className='help' to="/help"> Help </NavLink>
                     </li>
                 </ul>
             </div>
