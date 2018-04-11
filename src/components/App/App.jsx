@@ -30,7 +30,7 @@ class App extends Component {
                               )}/>
                               <Route path="/settings" component={Settings}/>
                               <Route path="/help" component={Help}/>
-                              <Route path="/:id" component={UserPage} />
+                              <Route path="/user/:id" component={UserPage} />
                               <Route render={() => <h1 className="errorMsg">404: Page cannot be found</h1>}/>
                           </Switch>
 

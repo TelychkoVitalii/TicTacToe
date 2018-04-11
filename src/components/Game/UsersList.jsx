@@ -40,7 +40,7 @@ class UsersList extends Component {
                                 const {first, last} = user.name;
                                 return (
                                     <li className="listItem" key={user.login.username}>
-                                        <Link to={`/${last}`}>
+                                        <Link to={`user/${last}`}>
                                             {capitalize(first)} {}
                                             {capitalize(last)}
                                         </Link>
