@@ -6,10 +6,10 @@ function TypeSet(props) {
             <div className="setUp">
                 <h2 className='blockTitle'>Your type</h2>
                 <select type='text'
-                        value={props.value}
+                        defaultValue={props.value}
                         id='changeType'
                         onChange={props.onTypeChanged}>
-                    <option disabled>Choose your figure</option>
+                    <option value="" disabled>Choose your figure</option>
                     <option>X</option>
                     <option>O</option>
                 </select>

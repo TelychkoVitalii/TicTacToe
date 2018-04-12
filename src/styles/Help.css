@@ -1,0 +1,22 @@
+.helpSection h1, .helpSection h2 {
+    text-align: center;
+}
+
+.helpSection {
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 2%;
+    height: 740px;
+    padding: 5px 20px;
+    margin: 1% 25%;
+    animation: fadeIn .7s;
+}
+
+.helpList {
+}
+
+.helpList li {
+    margin: 10px;
+    list-style-type: square;
+}

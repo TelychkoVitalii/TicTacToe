@@ -1,4 +1,4 @@
-import { ADD_SETTINGS } from '../modules/actionTypes';
+import { ADD_SETTINGS } from '../modules/game';
 
 const settingsMiddleware = store => next => action => {
     if(action.type === ADD_SETTINGS) {
