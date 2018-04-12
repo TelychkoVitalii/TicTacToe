@@ -25,7 +25,7 @@ class App extends Component {
                       <div className="app">
 
                           <Switch>
-                              <Route exact path="/" render={() => (
+                              <Route exact path={process.env.PUBLIC_URL + '/'} render={() => (
                                   (this.props.settings.figure === '') ? ( <Redirect to="/settings"/> ) : ( <GameLayout /> )
                               )}/>
                               <Route path="/settings" component={Settings}/>
