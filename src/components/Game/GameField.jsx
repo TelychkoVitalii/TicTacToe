@@ -15,13 +15,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = { addMove, addMoveAI };
 
 class GameField extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            condition: false,
-        }
-    }
-
     componentDidMount() {
         if(this.props.mode !== 'Human') {
             this.props.addMoveAI(this.props.index, this.props.move);

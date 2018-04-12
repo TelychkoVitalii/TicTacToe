@@ -4,56 +4,59 @@ import aiPlayerType from '../../services/miniMax/oppositeType';
 import showWinnerResults from '../../services/miniMax/showWinnerResults';
 
 const matrixMiddleware = store => next => action => {
-    let { matrix, summary, showWinner, settings } = store.getState().game,
-        figure = settings.figure;
 
     if(action.type === ADD_MOVE_AI) {
+        const matrix = [...store.getState().game.matrix],
+              settings = store.getState().game.settings,
+              figure = settings.figure;
         matrix.map((el, i) => (el === '') && (matrix[i] = i));
         matrix[4] = aiPlayerType(figure);
         matrix.map((el, i) => (typeof el === 'number') && (matrix[i] = ''));
+        action.payload = {matrix};
     }
 
     if(action.type === ADD_MOVE) {
-        matrix.map((el, i) => {
-            if (i === action.id) {
-                matrix[i] = action.figure;
-                return matrix[i];
-            } return matrix[i];
-        });
+        const matrix = [ ...store.getState().game.matrix ],
+              summary = { ...store.getState().game.summary },
+              showWinner = { ...store.getState().game.showWinner },
+              { id, figure } = action.payload;
+
+        (matrix[id] === '') && (matrix[id] = figure);
         matrix.map((el, i) => (el === '') && (matrix[i] = i));
         matrix[miniMax(matrix, figure).index] = aiPlayerType(figure);
         matrix.map((el, i) => (typeof el === 'number') && (matrix[i] = ''));
+
         const result = showWinnerResults(showWinner, matrix, figure, aiPlayerType(figure));
         localStorage.setItem('matrix', JSON.stringify(matrix));
 
-
         if(result === figure) {
-            action.player = summary.player++;
+            summary.player++;
         } else if(result === aiPlayerType(figure)) {
-            action.computer = summary.computer++;
+            summary.computer++;
         } else if(result === null) {
-            action.ties = summary.ties++;
+            summary.ties++;
         }
         localStorage.setItem('summary', JSON.stringify(summary));
+        action.payload = {matrix, summary, showWinner};
     }
 
     if(action.type === RESTART_GAME) {
+        const showWinner = { ...store.getState().game.showWinner };
         showWinner.isActive = false;
         showWinner.text = '';
         localStorage.removeItem('matrix');
-        return action.matrix.fill('');
+        return action.payload.matrix.fill('');
     }
 
     if(action.type === EXIT_GAME) {
+        const showWinner = { ...store.getState().game.showWinner };
         showWinner.isActive = false;
         showWinner.text = '';
-        summary.player = 0;
-        summary.ties = 0;
-        summary.computer = 0;
+        action.payload.summary = {player: 0, ties: 0, computer: 0};
         localStorage.removeItem('settings');
         localStorage.removeItem('matrix');
         localStorage.removeItem('summary');
-        return action.matrix.fill('');
+        return action.payload.matrix.fill('');
     }
     return next(action);
 };

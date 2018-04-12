@@ -6,35 +6,35 @@ export const ADD_SETTINGS = 'ADD_SETTINGS', ADD_MOVE = 'ADD_MOVE', ADD_MOVE_AI =
 export function addSettings(name, figure, mode) {
     return {
         type: ADD_SETTINGS,
-        name, figure, mode
+        payload: {name, figure, mode}
     }
 }
 
 export function addMove(id, figure) {
     return {
         type: ADD_MOVE,
-        id, figure
+        payload: {id, figure}
     }
 }
 
 export function addMoveAI(id, figure) {
     return {
         type: ADD_MOVE_AI,
-        id, figure
+        payload: {id, figure}
     }
 }
 
 export function restartGame(matrix) {
     return {
         type: RESTART_GAME,
-        matrix
+        payload: {matrix}
     }
 }
 
 export function exitGame(matrix, summary) {
     return {
         type: EXIT_GAME,
-        matrix, summary
+        payload: {matrix, summary}
     }
 }
 
@@ -50,19 +50,19 @@ export function exitGame(matrix, summary) {
     export default function reducer(state = initialState, action) {
         switch (action.type) {
             case ADD_SETTINGS: {
-                return Object.assign({}, state, {settings: {...state.settings}});
+                return Object.assign({}, state, {settings: {...action.payload}});
             }
             case ADD_MOVE: {
-                return Object.assign({}, state, {matrix: [...state.matrix], summary: {...state.summary}});
+                return Object.assign({}, state, action.payload);
             }
             case ADD_MOVE_AI: {
-                return Object.assign({}, state, {matrix: [...state.matrix], summary: {...state.summary}});
+                return Object.assign({}, state, action.payload);
             }
             case RESTART_GAME: {
-                return Object.assign({}, state, {matrix: {...state.matrix}});
+                return Object.assign({}, state, {matrix: {...action.payload}});
             }
             case EXIT_GAME: {
-                return Object.assign({}, state, {matrix: {...state.matrix}, summary: {...state.summary}});
+                return Object.assign({}, state, action.payload);
             }
             default:
                 return state;
