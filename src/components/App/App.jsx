@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect, HashRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from './Header';
 import Footer from './Footer';
@@ -19,7 +19,7 @@ class App extends Component {
 
   render() {
         return (
-            <HashRouter>
+            <Router basename={process.env.PUBLIC_URL}>
                 <div>
                     <Header/>
                       <div className="app">
@@ -37,7 +37,7 @@ class App extends Component {
                       </div>
                     <Footer/>
                 </div>
-            </HashRouter>
+            </Router>
         );
   }
 }
