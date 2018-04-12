@@ -27,7 +27,7 @@ class Cell extends Component {
                 }
             }
         }
-        return nextProps.matrix;
+        return null;
     }
 
     userMove = () => this.props.addMove(this.props.index, this.props.move);

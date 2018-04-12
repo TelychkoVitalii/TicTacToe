@@ -41,22 +41,24 @@ const matrixMiddleware = store => next => action => {
     }
 
     if(action.type === RESTART_GAME) {
-        const showWinner = { ...store.getState().game.showWinner };
+        const showWinner = { ...store.getState().game.showWinner },
+              matrix = [...store.getState().game.matrix];
         showWinner.isActive = false;
         showWinner.text = '';
         localStorage.removeItem('matrix');
-        return action.payload.matrix.fill('');
+        matrix.fill('');
     }
 
     if(action.type === EXIT_GAME) {
-        const showWinner = { ...store.getState().game.showWinner };
+        const showWinner = { ...store.getState().game.showWinner },
+              matrix = [...store.getState().game.matrix];
         showWinner.isActive = false;
         showWinner.text = '';
         action.payload.summary = {player: 0, ties: 0, computer: 0};
         localStorage.removeItem('settings');
         localStorage.removeItem('matrix');
         localStorage.removeItem('summary');
-        return action.payload.matrix.fill('');
+        matrix.fill('');
     }
     return next(action);
 };
