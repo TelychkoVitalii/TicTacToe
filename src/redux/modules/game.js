@@ -59,7 +59,7 @@ export function exitGame(matrix, summary) {
                 return Object.assign({}, state, action.payload);
             }
             case RESTART_GAME: {
-                return Object.assign({}, state, {matrix: {...action.payload}});
+                return Object.assign({}, state, action.payload);
             }
             case EXIT_GAME: {
                 return Object.assign({}, state, action.payload);

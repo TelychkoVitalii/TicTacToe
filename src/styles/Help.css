@@ -9,14 +9,11 @@
     border-radius: 2%;
     height: 740px;
     padding: 5px 20px;
-    margin: 1% 25%;
+    margin: 0.5% 25%;
     animation: fadeIn .7s;
 }
 
-.helpList {
-}
-
-.helpList li {
+.helpSection ul li {
     margin: 10px;
     list-style-type: square;
 }

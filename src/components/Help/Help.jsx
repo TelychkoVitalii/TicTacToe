@@ -16,7 +16,7 @@ function Help() {
                 </p>
                 <p>In 1975, tic-tac-toe was also used by MIT students to demonstrate the computational power of Tinkertoy elements. The Tinkertoy computer, made out of (almost) only Tinkertoys, is able to play tic-tac-toe perfectly.It is currently on display at the Museum of Science, Boston.</p>
                 <h1>How to play</h1>
-                <ul className="helpList">
+                <ul>
                     <li>Go to the 'Settings' section and select the ones that suit you</li>
                     <li>After this, the game begins and your winning is guaranteed
                         if you manage to fill 3 fields at once horizontally, vertically or diagonally.
