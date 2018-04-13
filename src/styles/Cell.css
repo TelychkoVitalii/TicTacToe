@@ -1,7 +1,6 @@
 .cell, .innerCell {
-    position: relative;
     float: left;
-    width: 225px;
+    width: 14rem;
     height: 225px;
     text-align: center;
     cursor: pointer;

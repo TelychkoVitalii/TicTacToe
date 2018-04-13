@@ -14,17 +14,23 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = { addMove };
 
 class Cell extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            condition: false,
+    state = {
+       condition: false,
+       matrix: this.props.matrix
+    };
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if(nextProps.matrix !== prevState.matrix) {
+            if(nextProps.matrix[nextProps.index] !== '') {
+                return {
+                    condition: true
+                }
+            }
         }
+        return null;
     }
 
-    userMove = () => {
-        this.setState({ condition: true });
-        this.props.addMove(this.props.index, this.props.move);
-    };
+    userMove = () => this.props.addMove(this.props.index, this.props.move);
 
     render() {
         return (

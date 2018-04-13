@@ -17,4 +17,3 @@ const showWinnerResults = (showWinner, matrix, human, computer) => {
 };
 
 export default showWinnerResults;
-// winnerStyle
