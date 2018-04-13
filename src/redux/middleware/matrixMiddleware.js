@@ -47,6 +47,7 @@ const matrixMiddleware = store => next => action => {
         showWinner.text = '';
         localStorage.removeItem('matrix');
         matrix.fill('');
+        action.payload = {matrix};
     }
 
     if(action.type === EXIT_GAME) {
@@ -59,6 +60,7 @@ const matrixMiddleware = store => next => action => {
         localStorage.removeItem('matrix');
         localStorage.removeItem('summary');
         matrix.fill('');
+        action.payload = {matrix};
     }
     return next(action);
 };
