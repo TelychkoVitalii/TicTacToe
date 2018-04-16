@@ -8,9 +8,10 @@ const matrixMiddleware = store => next => action => {
     if(action.type === ADD_MOVE_AI) {
         const matrix = [...store.getState().game.matrix],
               settings = store.getState().game.settings,
-              figure = settings.figure;
+              figure = settings.figure,
+              randoms = [0, 2, 6, 8];
         matrix.map((el, i) => (el === '') && (matrix[i] = i));
-        matrix[4] = aiPlayerType(figure);
+        matrix[randoms[Math.floor(Math.random() * randoms.length)]] = aiPlayerType(figure);
         matrix.map((el, i) => (typeof el === 'number') && (matrix[i] = ''));
         action.payload = {matrix};
     }
